@@ -23,6 +23,15 @@ import GenderList from "./Gender/GenderList";
 import GenderUpsert from "./Gender/GenderUpsert";
 import FirstServiceList from "./FirstService/FirstServiceList";
 import FirstServiceUpsert from "./FirstService/FirstServiceUpsert";
+import BookingList from "./Booking/BookingList";
+import BookingUpsert from "./Booking/BookingUpsert";
+import SalonBranchList from "./SalonBranch/SalonBranchList";
+import SalonBranchUpsert from "./SalonBranch/SalonBranchUpsert";
+import SalonBranchXPaymentUpsert from "./SalonBranchXPayment/SalonBranchXPaymentUpsert";
+import SalonBranchXGenderUpsert from "./SalonBranchXGender/SalonBranchXGenderUpsert";
+import SalonBranchXServiceUpsert from "./SalonBranchXService/SalonBranchXServiceUpsert";
+import Details from "./Details";
+
 
 
 export {
@@ -51,5 +60,13 @@ export {
   GenderUpsert,
   FirstServiceList,
   FirstServiceUpsert,
+  BookingList,
+  BookingUpsert,
+  SalonBranchList,
+  SalonBranchUpsert,
+  SalonBranchXPaymentUpsert,
+  SalonBranchXGenderUpsert,
+  SalonBranchXServiceUpsert,
+  Details,
 
 };

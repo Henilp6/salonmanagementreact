@@ -14,6 +14,11 @@ import {
   countryApi,
   stateApi,
   cityApi,
+  bookingApi,
+  salonBranchApi,
+  salonBranchXPaymentApi,
+  salonBranchXGenderApi,
+  salonBranchXServiceApi,
 } from "../../Apis";
 import { countryReducer } from "./countrySlice";
 import { stateReducer } from "./stateSlice";
@@ -21,6 +26,11 @@ import { cityReducer } from "./citySlice";
 import { paymentReducer } from "./PaymentSlice";
 import { genderReducer } from "./GenderSlice";
 import { firstServiceReducer } from "./firstServiceSlice";
+import { bookingReducer } from "./bookingSlice";
+import { salonBranchReducer } from "./salonBranchSlice";
+import { salonBranchXPaymentReducer } from "./salonBranchXPaymentSlice";
+import { salonBranchXGenderReducer } from "./salonBranchXGenderSlice";
+import { salonBranchXServiceReducer } from "./salonBranchXServiceSlice";
 
 
 const store = configureStore({
@@ -35,6 +45,11 @@ const store = configureStore({
     countryStore : countryReducer,
     stateStore : stateReducer,
     cityStore : cityReducer,
+    bookingStore : bookingReducer,
+    salonBranchStore : salonBranchReducer,
+    salonBranchXpaymentStore : salonBranchXPaymentReducer,
+    salonBranchXgenderStore : salonBranchXGenderReducer,
+    salonBranchXserviceStore : salonBranchXServiceReducer,
 
 
 
@@ -48,6 +63,12 @@ const store = configureStore({
     [countryApi.reducerPath] : countryApi.reducer,
     [stateApi.reducerPath] : stateApi.reducer,
     [cityApi.reducerPath] : cityApi.reducer,
+    [bookingApi.reducerPath] : bookingApi.reducer,
+    [salonBranchApi.reducerPath] : salonBranchApi.reducer,
+    [salonBranchXPaymentApi.reducerPath] : salonBranchXPaymentApi.reducer,
+    [salonBranchXGenderApi.reducerPath] : salonBranchXGenderApi.reducer,
+    [salonBranchXServiceApi.reducerPath] : salonBranchXServiceApi.reducer,
+
 
   },
 
@@ -63,6 +84,11 @@ const store = configureStore({
       .concat(countryApi.middleware)
       .concat(stateApi.middleware)
       .concat(cityApi.middleware)
+      .concat(bookingApi.middleware)
+      .concat(salonBranchApi.middleware)
+      .concat(salonBranchXPaymentApi.middleware)
+      .concat(salonBranchXGenderApi.middleware)
+      .concat(salonBranchXServiceApi.middleware)
 
 
 

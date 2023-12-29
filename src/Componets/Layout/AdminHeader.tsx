@@ -59,7 +59,7 @@ function AdminHeader() {
         <div className="container-fluid">
           <NavLink className="nav-link text-light" aria-current="page" to="/">
 
-            &nbsp;Salon Management Admin Header.....
+            &nbsp;NY Salon
           </NavLink>
 
 
@@ -75,7 +75,7 @@ function AdminHeader() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Salon's Type
+                  Salon Master
                 </a>
                 <ul className="dropdown-menu">
                   <li className="nav-item">
@@ -113,68 +113,21 @@ function AdminHeader() {
                     <a
                       className="nav-link text-dark"
                       style={{ cursor: "pointer" }}
-                      onClick={() => navigate("employeeSize/employeeSizelist")}
+                      onClick={() => navigate("salonBranch/salonBranchlist")}
                     >
-                      Employee Size
+                      SalonBranch
                     </a>
                   </li>
                   <li className="nav-item">
                     <a
                       className="nav-link text-dark"
                       style={{ cursor: "pointer" }}
-                      onClick={() => navigate("hourlyRate/hourlyRatelist")}
+                      onClick={() => navigate("booking/bookingUpsert")}
                     >
-                      hourlyRate
+                      Booking
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => navigate("companyXIndustry/companyXIndustryUpsert/"+1)}
-                    >
-                     companyXIndustry
-                    </a>
-                  </li>
-
-                    
-
-                  <li className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => navigate("company/companylist")}
-                    >
-                     Company
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => navigate("parentService/parentServicelist")}
-                    >
-                     ParentService
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => navigate("childService/childServicelist")}
-                    >
-                     ChildService
-                     </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      className="nav-link text-dark"
-                      style={{ cursor: "pointer" }}
-                      onClick={() => navigate("companyLocation/companyLocationUpsert/"+1)}
-                    >
-                     CompanyLocation
-                    </a>
-                  </li>
+          
 
                 </ul>
                 </li>

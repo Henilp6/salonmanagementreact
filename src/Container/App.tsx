@@ -23,6 +23,14 @@ import {
   GenderUpsert,
   FirstServiceList,
   FirstServiceUpsert,
+  BookingList,
+  BookingUpsert,
+  SalonBranchList,
+  SalonBranchUpsert,
+  SalonBranchXPaymentUpsert,
+  SalonBranchXGenderUpsert,
+  SalonBranchXServiceUpsert,
+  Details,
 
 } from "../Pages";
 
@@ -78,9 +86,12 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Home" element={<Home />} />
+          <Route path="/Details/:salonBranchId" element={<Details />} />
           <Route path="/AdminHome" element={<AdminHome />} />
 
+          <Route path="/search(/search)(/:location)" element={<Search />} />
           <Route path="/search/:search" element={<Search />} />
+          <Route path="/search/:location" element={<Search />} />
 
           <Route path="/accessDenied"  element={<AccessDenied/>} />
 
@@ -119,6 +130,23 @@ function App() {
           <Route path="/firstService/firstServicelist" element={<FirstServiceList />} />
           <Route path="/firstService/firstServiceUpsert/:id" element={<FirstServiceUpsert />} />
           <Route path="/firstService/firstServiceUpsert" element={<FirstServiceUpsert />} />
+
+          <Route path="/booking/bookinglist" element={<BookingList />} />
+          <Route path="/booking/bookingUpsert/:id" element={<BookingUpsert />} />
+          <Route path="/booking/bookingUpsert" element={<BookingUpsert />} />
+
+          <Route path="/salonBranch/salonBranchlist" element={<SalonBranchList />} />
+          <Route path="/salonBranch/salonBranchUpsert/:id" element={<SalonBranchUpsert />} />
+          <Route path="/salonBranch/salonBranchUpsert" element={<SalonBranchUpsert />} />
+
+          <Route path="/salonBranchXPayment/salonBranchXPaymentUpsert/:salonBranchId" element={<SalonBranchXPaymentUpsert />} />
+          <Route path="/salonBranchXPayment/salonBranchXPaymentUpsert" element={<SalonBranchXPaymentUpsert />} />
+
+          <Route path="/salonBranchXGender/salonBranchXGenderUpsert/:salonBranchId" element={<SalonBranchXGenderUpsert />} />
+          <Route path="/salonBranchXGender/salonBranchXGenderUpsert" element={<SalonBranchXGenderUpsert />} />
+
+          <Route path="/salonBranchXService/salonBranchXServiceUpsert/:salonBranchId" element={<SalonBranchXServiceUpsert />} />
+          <Route path="/salonBranchXService/salonBranchXServiceUpsert" element={<SalonBranchXServiceUpsert />} />
 
         </Routes>
       </div>

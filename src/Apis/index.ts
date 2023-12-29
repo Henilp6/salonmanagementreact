@@ -8,6 +8,11 @@ import firstServiceApi from "./firstServiceApi";
 import countryApi from "./countryApi";
 import stateApi from "./stateApi";
 import cityApi from "./cityApi";
+import bookingApi from "./bookingApi";
+import salonBranchApi from "./salonBranchApi";
+import salonBranchXPaymentApi from "./salonBranchXPaymentApi";
+import salonBranchXGenderApi from "./salonBranchXGenderApi";
+import salonBranchXServiceApi from "./salonBranchXServiceApi";
 
 export {
     applicationRoleApi,
@@ -20,4 +25,9 @@ export {
     countryApi,
     stateApi,
     cityApi,
+    bookingApi,
+    salonBranchApi,
+    salonBranchXPaymentApi,
+    salonBranchXGenderApi,
+    salonBranchXServiceApi,
 };

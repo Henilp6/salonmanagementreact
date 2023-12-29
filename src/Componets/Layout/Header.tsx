@@ -4,14 +4,40 @@ import { NavLink, useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
   const [search, setSearchText] = useState("");
+  const [location, setLocation] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const receivedRoles = ["Customer", "Admin","Data Operator"]; 
   const [userRole, setUserRole] = useState(receivedRoles);
 
+  // const handleSearch = () => {
+  //   navigate(`/search/search${search}/location${location}`);
+  // };
   const handleSearch = () => {
-    navigate(`/search/${search}`);
+  
+  //  if(search){
+  //   navigate(`/search/${search}`);
+  //  }
+  //  if(location){
+  //   navigate(`/search/${location}`);
+  //  }
+   if(search || location){
+    navigate(`/search/${search}/${location}`);
+   }
+    
+   
   };
+
+//    const handleSearch = () => {
+//     const searchvalue = search.trim();
+//     const locationvalue = location.trim();
+// debugger;
+//     if (searchvalue || locationvalue) {
+
+//       const route = `/search/search?${searchvalue}&location=${locationvalue}`;
+//       navigate(route);
+//     }
+//   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -59,7 +85,7 @@ function Header() {
         <div className="container-fluid">
           <NavLink className="nav-link text-light" aria-current="page" to="/">
 
-            &nbsp; Salon Management
+            &nbsp; NY Salon
           </NavLink>
 
 
@@ -71,10 +97,17 @@ function Header() {
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Search Company"
+                    placeholder="Search SalonBranch"
                     value={search}
                     onChange={(e) => setSearchText(e.target.value)}
                   />
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Location"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                    />
                   <button
                     className="btn btn-primary ms-1"
                     type="button"
@@ -88,7 +121,7 @@ function Header() {
                 )}
 
 
-{ userRole.includes("Customer")  && (
+{/* { userRole.includes("Customer")  && (
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle text-light"
@@ -122,7 +155,7 @@ function Header() {
               </ul>
 
             </li>
-          )}
+          )} */}
         
         </ul>
       </div>

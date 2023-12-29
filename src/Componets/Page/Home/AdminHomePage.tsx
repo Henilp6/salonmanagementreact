@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import CompanyIndex from "./CompanyIndex";
+import CompanyIndex from "./SalonBranchIndex";
 import { useDispatch } from "react-redux";
 import { MainLoader,MiniLoader } from "../Common";
 

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import {
-  useDeleteFirstServiceMutation,
-  useGetFirstServicesQuery,
-} from "../../Apis/firstServiceApi";
+  useDeleteBookingMutation,
+  useGetBookingsQuery,
+} from "../../Apis/bookingApi";
 import { toast } from "react-toastify";
-import { MainLoader } from "../../Componets/Page/Common";
-import { firstServiceModel } from "../../Interfaces";
+import { MainLoader } from "../../Componets/Page/Common"; 
+import { bookingModel } from "../../Interfaces"; 
 import { useNavigate } from "react-router-dom";
 
 import { debounce } from "lodash";
 
-function FirstServiceList() {
-  const [deleteFirstService] = useDeleteFirstServiceMutation();
+function BookingList() {
+  const [deleteBooking] = useDeleteBookingMutation();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize, setPageSize] = useState(5);
-  const { data, isLoading, isError, refetch } = useGetFirstServicesQuery({
+  const { data, isLoading, isError, refetch } = useGetBookingsQuery({
     search: searchQuery,
     pageSize: pageSize,
     pageNumber: pageNumber,
@@ -67,12 +67,12 @@ function FirstServiceList() {
 
   const debouncedSearch = debounce(() => refetch(), 300);
 
-  const handleFirstServiceDelete = async (id: number) => {
+  const handleBookingDelete = async (id: number) => {
     toast.promise(
-      deleteFirstService(id),
+      deleteBooking(id),
       {
         pending: "Processing your request...",
-        success: "FirstService Deleted Successfully 👌",
+        success: "Booking Deleted Successfully 👌",
         error: "Error encoutnered 🤯",
       },
       {
@@ -98,13 +98,13 @@ function FirstServiceList() {
       {!isLoading && !isError && (
         <div className="table p-5">
           <div className="d-flex align-items-center justify-content-between">
-            <h1 className="text-success">FirstService List</h1>
+            <h1 className="text-success">Booking List</h1>
 
             <button
               className="btn btn-success"
-              onClick={() => navigate("/firstService/firstServiceupsert")}
+              onClick={() => navigate("/booking/bookingupsert")}
             >
-              Add New FirstService
+              Add New Booking
             </button>
           </div>
           <div className="row border p-2">
@@ -127,27 +127,29 @@ function FirstServiceList() {
 
           <div className="">
             <div className="row border">
-              <div className="col-4">FirstServiceName</div>
-              <div className="col-2">IsActive</div>
+              <div className="col-4">customer Name</div>
+              <div className="col-2">Customer MobileNumber</div>
+              <div className="col-2">Salon Branch</div>
               <div className="col-4">Action</div>
             </div>
 
-            {data.result.map((firstService: firstServiceModel) => (
-              <div className="row border" key={firstService.id}>
-                <div className="col-4">{firstService.firstServiceName}</div>
-                <div className="col-2">{firstService.isActive?.toString()}</div>
+            {data.result?.map((booking: bookingModel) => (
+              <div className="row border" key={booking.id}>
+                <div className="col-4">{booking.customerName}</div>
+                <div className="col-2">{booking.customerMobileNumber}</div>
+                <div className="col-2">{booking.salonBranch?.branchName}</div>
                 <div className="col-4">
                   <button className="btn btn-success">
                     <i
                       className="bi bi-pencil-fill"
                       onClick={() =>
-                        navigate("/firstService/firstServiceupsert/" + firstService.id)
+                        navigate("/booking/bookingupsert/" + booking.id)
                       }
                     ></i>
                   </button>
                   <button
                     className="btn btn-danger mx-2"
-                    onClick={() => handleFirstServiceDelete(firstService.id)}
+                    onClick={() => handleBookingDelete(booking.id)}
                   >
                     <i className="bi bi-trash-fill"></i>
                   </button>
@@ -178,4 +180,4 @@ function FirstServiceList() {
     </>
   );
 }
-export default FirstServiceList;
+export default BookingList;

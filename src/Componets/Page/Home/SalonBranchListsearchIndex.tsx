@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { MainLoader,MiniLoader } from "../Common";
+import { MainLoader } from "../Common";
+import { useParams } from "react-router-dom";
+import CompanyIndex from "./SalonBranchIndex";
 import { salonBranchModel } from "../../../Interfaces";
-import { useGetSalonBranchSearchByLazyLoadingQuery } from "../../../Apis/salonBranchApi";
+import { useDispatch } from "react-redux";
+import { useGetSalonBranchSearchLocationByLazyLoadingQuery } from "../../../Apis/salonBranchApi";
 import SalonBranchIndex from "./SalonBranchIndex";
 
-function SalonListIndex() {
+function SalonBranchSearchIndex() {
   const [pageNum, setPageNum] = useState(0);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [allSalonBranchs, setAllSalonBranchs] = useState<salonBranchModel[]>([]);
+  debugger;
+  const { search} = useParams();
+  const { location } = useParams();
 
-  const dispatch = useDispatch();
-  const search = "";
-
-  const { data, isLoading } = useGetSalonBranchSearchByLazyLoadingQuery({
+  const { data, isLoading } = useGetSalonBranchSearchLocationByLazyLoadingQuery({
     pageNum,
     search: search || "",
+    location: location || "",
   });
 
   useEffect(() => {
@@ -64,10 +67,5 @@ function SalonListIndex() {
     </div>
   );
 }
-
-
-export default SalonListIndex;
-
-
-
+export default SalonBranchSearchIndex;
 

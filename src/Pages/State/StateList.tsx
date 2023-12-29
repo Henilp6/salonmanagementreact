@@ -83,25 +83,11 @@ function StateList() {
                 Search
               </button>
             </div>
-            <div className="col-1">
-              <label htmlFor="pageSize">Page Size:</label>
-              <select
-                id="pageSize"
-                className="form-control"
-                value={pageSize}
-                onChange={handlePageSizeChange}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-              </select>
-            </div>
+          
           </div>
 
           <div className="p-2">
             <div className="row border">
-              <div className="col-1">Id</div>
               <div className="col-3">StateName</div>
               <div className="col-3">CountryName</div>
               <div className="col-3">IsActive</div>
@@ -111,7 +97,6 @@ function StateList() {
             {data.result.map((state: stateModel) => {
               return (
                 <div className="row border" key={state.id}>
-                  <div className="col-1">{state.id}</div>
                   <div className="col-3">{state.stateName}</div>
                   <div className="col-3">{state.country?.countryName}</div>
                   <div className="col-3">{state.isActive?.toString()}</div>

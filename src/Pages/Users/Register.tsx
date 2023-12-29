@@ -89,17 +89,7 @@ function Register() {
               onChange={handleUserInput}
             />
           </div>
-          <div className="col-sm-6 offset-sm-3 col-xs-12 mt-4">
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter Password"
-              required
-              name="password"
-              value={userInput.password}
-              onChange={handleUserInput}
-            />
-          </div>
+       
 
           <div className="col-sm-6 offset-sm-3 col-xs-12 mt-4">
             <input
@@ -124,20 +114,20 @@ function Register() {
               onChange={handleUserInput}
             />
           </div>
-
-          {/* <div className="col-sm-6 offset-sm-3 col-xs-12 mt-4">
-            <select
-              className="form-control form-select"
+          
+          <div className="col-sm-6 offset-sm-3 col-xs-12 mt-4">
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter Password"
               required
-              value={userInput.phoneNumber}
-              name="role"
+              name="password"
+              value={userInput.password}
               onChange={handleUserInput}
-            >
-              <option value="">--Select Role--</option>
-              <option value={`${SD_Roles.CUTOMER}`}>Customer</option>
-              <option value={`${SD_Roles.ADMIN}`}>Admin</option>
-            </select>
-          </div> */}
+            />
+          </div>
+
+       
         </div>
         <div className="mt-5">
           <button type="submit" className="btn btn-success" disabled={loading}>

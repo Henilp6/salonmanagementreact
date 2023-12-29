@@ -40,13 +40,19 @@ function Home() {
 
   return (
     <div>
-      {(!userRole.includes("Data Operator") ) && (!userRole.includes("Admin") ) && (
+      {!userRole.includes("Admin") && (
+        
       <div className="container p-2">
+         <div style={{ textAlign: 'center', backgroundColor: 'brown', padding: '20px' }}>
+        <h1 style={{ color: 'white' }}>
+          Welecome To NY Salon
+        </h1>
+      </div>
         <SalonListIndex/>
       </div>
         )}
         
-      { (userRole.includes("Data Operator") || userRole.includes("Admin")) && (
+      { userRole.includes("Admin") && (
       <div className="container p-2">
         <AdminHomePage/>
       </div>

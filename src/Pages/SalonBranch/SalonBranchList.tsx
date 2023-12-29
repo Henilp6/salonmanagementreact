@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import {
-  useDeleteFirstServiceMutation,
-  useGetFirstServicesQuery,
-} from "../../Apis/firstServiceApi";
+  useDeleteSalonBranchMutation,
+  useGetSalonBranchsQuery,
+} from "../../Apis/salonBranchApi";
 import { toast } from "react-toastify";
 import { MainLoader } from "../../Componets/Page/Common";
-import { firstServiceModel } from "../../Interfaces";
 import { useNavigate } from "react-router-dom";
 
 import { debounce } from "lodash";
+import salonBranchModel from "../../Interfaces/salonBranchModel";
 
-function FirstServiceList() {
-  const [deleteFirstService] = useDeleteFirstServiceMutation();
+function SalonBranchList() {
+  const [deleteSalonBranch] = useDeleteSalonBranchMutation();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [pageSize, setPageSize] = useState(5);
-  const { data, isLoading, isError, refetch } = useGetFirstServicesQuery({
+  const { data, isLoading, isError, refetch } = useGetSalonBranchsQuery({
     search: searchQuery,
     pageSize: pageSize,
     pageNumber: pageNumber,
@@ -67,12 +67,12 @@ function FirstServiceList() {
 
   const debouncedSearch = debounce(() => refetch(), 300);
 
-  const handleFirstServiceDelete = async (id: number) => {
+  const handleSalonBranchDelete = async (id: number) => {
     toast.promise(
-      deleteFirstService(id),
+      deleteSalonBranch(id),
       {
         pending: "Processing your request...",
-        success: "FirstService Deleted Successfully 👌",
+        success: "SalonBranch Deleted Successfully 👌",
         error: "Error encoutnered 🤯",
       },
       {
@@ -98,13 +98,13 @@ function FirstServiceList() {
       {!isLoading && !isError && (
         <div className="table p-5">
           <div className="d-flex align-items-center justify-content-between">
-            <h1 className="text-success">FirstService List</h1>
+            <h1 className="text-success">SalonBranch List</h1>
 
             <button
               className="btn btn-success"
-              onClick={() => navigate("/firstService/firstServiceupsert")}
+              onClick={() => navigate("/salonBranch/salonBranchupsert")}
             >
-              Add New FirstService
+              Add New SalonBranch
             </button>
           </div>
           <div className="row border p-2">
@@ -127,27 +127,59 @@ function FirstServiceList() {
 
           <div className="">
             <div className="row border">
-              <div className="col-4">FirstServiceName</div>
-              <div className="col-2">IsActive</div>
-              <div className="col-4">Action</div>
+              <div className="col-1">BranchName</div>
+              <div className="col-2">Area</div>
+              <div className="col-2">BranchXPayment</div>
+              <div className="col-2">BranchXGender</div>
+              <div className="col-2">BranchXService</div>
+           
+              <div className="col-3">Action</div>
             </div>
 
-            {data.result.map((firstService: firstServiceModel) => (
-              <div className="row border" key={firstService.id}>
-                <div className="col-4">{firstService.firstServiceName}</div>
-                <div className="col-2">{firstService.isActive?.toString()}</div>
-                <div className="col-4">
+            {data.result.map((salonBranch: salonBranchModel) => (
+              <div className="row border" key={salonBranch.id}>
+                <div className="col-1">{salonBranch.branchName}</div>
+                <div className="col-2">{salonBranch.area}</div>
+                <div className="col-2">
+                    <button
+                      className="btn btn-success"
+                      onClick={() => navigate("/salonBranchXPayment/salonBranchXPaymentUpsert/" + salonBranch.id)}
+                    >
+                      AddPayment
+                      
+                    </button>
+                   </div>
+                   <div className="col-2">
+                    <button
+                      className="btn btn-success"
+                      onClick={() => navigate("/salonBranchXGender/salonBranchXGenderUpsert/" + salonBranch.id)}
+                    >
+                      AddGender
+                      
+                    </button>
+                   </div>
+                   <div className="col-2">
+                    <button
+                      className="btn btn-success"
+                      onClick={() => navigate("/salonBranchXService/salonBranchXServiceUpsert/" + salonBranch.id)}
+                    >
+                      AddService
+                      
+                    </button>
+                   </div>
+             
+                <div className="col-3">
                   <button className="btn btn-success">
                     <i
                       className="bi bi-pencil-fill"
                       onClick={() =>
-                        navigate("/firstService/firstServiceupsert/" + firstService.id)
+                        navigate("/salonBranch/salonBranchupsert/" + salonBranch.id)
                       }
                     ></i>
                   </button>
                   <button
                     className="btn btn-danger mx-2"
-                    onClick={() => handleFirstServiceDelete(firstService.id)}
+                    onClick={() => handleSalonBranchDelete(salonBranch.id)}
                   >
                     <i className="bi bi-trash-fill"></i>
                   </button>
@@ -178,4 +210,4 @@ function FirstServiceList() {
     </>
   );
 }
-export default FirstServiceList;
+export default SalonBranchList;

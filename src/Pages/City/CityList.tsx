@@ -84,26 +84,12 @@ function CityList() {
                 Search
               </button>
             </div>
-            <div className="col-1">
-              <label htmlFor="pageSize">Page Size:</label>
-              <select
-                id="pageSize"
-                className="form-control"
-                value={pageSize}
-                onChange={handlePageSizeChange}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-              </select>
-            </div>
+          
           </div>
 
 
           <div className="p-2">
             <div className="row border">
-              <div className="col-1">Id</div>
               <div className="col-2">City Name</div>
               <div className="col-2">Country Name</div>
               <div className="col-2">City Name</div>
@@ -114,7 +100,6 @@ function CityList() {
             {data.result.map((city: cityModel) => {
               return (
                 <div className="row border" key={city.id}>
-                  <div className="col-1">{city.id}</div>
                   <div className="col-2">{city.cityName}</div>
                   <div className="col-2">{city.country?.countryName}</div>
                   <div className="col-2">{city.state?.stateName}</div>

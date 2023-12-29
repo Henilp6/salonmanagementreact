@@ -26,7 +26,12 @@ const cityApi = createApi({
       }),
       providesTags: ["Citys"],
     }),
-
+    getCitysByStateId: builder.query({
+      query: (stateId) => ({
+        url: `CityAPI/GetCitysByStateId/${stateId}`,
+      }),
+      providesTags: ["Citys"],
+    }),
    
     createCity: builder.mutation({
       query: (data) => ({
@@ -63,5 +68,6 @@ export const {
   useCreateCityMutation,
   useUpdateCityMutation,
   useDeleteCityMutation,
+  useGetCitysByStateIdQuery,
 } = cityApi;
 export default cityApi;
